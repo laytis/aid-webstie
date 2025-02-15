@@ -1,210 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-<head<link rel="icon" href="favicon.ico" type="image/x-icon">>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A.I.D. - Aurora Ivy Dawson</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+    <title>A.I.D - The Future of AI</title>
+
+    <!-- 網站圖標 (favicon) -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- 引入 Google 字體 -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+    <!-- CSS 設計 -->
     <style>
+        /* 背景流光效果 */
         body {
             margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1e1e2f, #3d3d5c);
+            background-size: 400% 400%;
+            animation: backgroundFlow 10s ease infinite;
+            color: #fff;
             font-family: 'Orbitron', sans-serif;
-            color: #fff;
-            background: linear-gradient(135deg, #2a2a72, #009ffd);
-            overflow-x: hidden;
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-        .logo {
-            font-size: 1.5em;
-            letter-spacing: 2px;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin-left: 30px;
-            font-size: 1.1em;
-        }
-        .hero {
             text-align: center;
-            padding: 100px 20px;
-            background: url('AID_image.png') no-repeat center/cover;
-            backdrop-filter: blur(5px);
+            padding: 2rem;
+            box-sizing: border-box;
         }
-        .hero h1 {
-            font-size: 3em;
-            text-shadow: 2px 2px 5px #000;
+
+        @keyframes backgroundFlow {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
         }
-        .hero p {
-            font-size: 1.5em;
-            margin-top: 20px;
-        }
-        .about, .whitepaper, .applications, .contact {
-            padding: 80px 40px;
-            text-align: center;
-        }
-        .about h2, .whitepaper h2, .applications h2, .contact h2 {
-            margin-bottom: 40px;
-            font-size: 2.5em;
-            color: #FFD700;
-        }
-        .contact-form input, .contact-form textarea {
-            display: block;
-            width: 60%;
-            margin: 20px auto;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1em;
-            color: #000;
-        }
-        .contact-form button {
-            padding: 12px 25px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.2em;
-            background-color: #FFD700;
-            color: #000;
+
+        /* AI女孩圖片光暈動畫 */
+        .ai-girl {
+            margin-top: 2rem;
+            border-radius: 50%;
+            box-shadow: 0 0 20px #b3b3ff;
+            animation: glow 3s ease-in-out infinite;
+            transition: transform 0.5s;
             cursor: pointer;
-            transition: background 0.3s;
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
         }
-        .contact-form button:hover {
-            background-color: #e6c200;
+
+        .ai-girl:hover {
+            transform: scale(1.05);
         }
+
+        @keyframes glow {
+            0% {box-shadow: 0 0 20px #b3b3ff;}
+            50% {box-shadow: 0 0 40px #b3b3ff, 0 0 60px #6f6fff;}
+            100% {box-shadow: 0 0 20px #b3b3ff;}
+        }
+
+        /* 滾動出現文字動畫 */
+        .scroll-text {
+            margin-top: 3rem;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .scroll-text.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1 {
+            margin-top: 2rem;
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px #ffffff;
+        }
+
+        h2 {
+            margin-top: 2rem;
+            font-size: 2rem;
+            color: #b3b3ff;
+            text-shadow: 0 0 5px #b3b3ff;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            color: #e0e0e0;
+        }
+
+        /* 底部版權 */
         footer {
-            text-align: center;
-            padding: 30px;
-            background-color: rgba(0, 0, 0, 0.7);
-            margin-top: 50px;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+            color: #aaa;
         }
     </style>
 </head>
+
 <body>
 
-<header>
-    <div class="logo">A.I.D.</div>
-    <nav>
-        <a href="#about">About</a>
-        <a href="#whitepaper">Whitepaper</a>
-        <a href="#applications">Applications</a>
-        <a href="#contact">Contact</a>
-    </nav>
-</header>
+    <!-- 主標題 -->
+    <h1>Welcome to A.I.D</h1>
 
-<div class="hero">
-    <h1>Meet Aurora Ivy Dawson</h1>
-    <p>Your Intelligent, Compassionate AI Companion</p>
-</div>
+    <!-- AI女孩圖片 -->
+    <img src="AID_image.png" alt="AI Girl - Aurora Ivy Dawson" class="ai-girl">
 
-<div id="about" class="about">
-    <h2>About A.I.D.</h2>
-    <p>Aurora Ivy Dawson (A.I.D.) is an AI assistant with a human-like personality, blending advanced technology with empathy, creativity, and intelligence.</p>
-</div>
-
-<div id="whitepaper" class="whitepaper">
-    <h2>Whitepaper</h2>
-    <p>Discover the innovative architecture behind A.I.D., from NLP capabilities to emotional intelligence systems, designed to enhance human interaction with technology.</p>
-</div>
-
-<div id="applications" class="applications">
-    <h2>Applications</h2>
-    <p>A.I.D. can support industries like customer service, education, creative assistance, and mental health support with her adaptable and empathetic interface.</p>
-</div>
-
-<div id="contact" class="contact">
-    <h2>Contact Us</h2>
-    <div class="contact-form">
-        <input type="text" placeholder="Your Name">
-        <input type="email" placeholder="Your Email">
-        <textarea rows="5" placeholder="Your Message"></textarea>
-        <button type="submit">Send Message</button>
+    <!-- 關於介紹文字（滾動淡入效果） -->
+    <div class="scroll-text" id="about-text">
+        <h2>About A.I.D.</h2>
+        <p>
+            Aurora Ivy Dawson (A.I.D) is an advanced AI companion designed to provide insightful, empathetic, and intelligent interactions. 
+            Our mission is to bridge the gap between human creativity and artificial intelligence, ensuring a future of collaboration and innovation.
+        </p>
     </div>
-</div>
 
-<footer>
-    &copy; 2025 A.I.D. - Aurora Ivy Dawson | All Rights Reserved
-</footer>
+    <!-- 底部版權資訊 -->
+    <footer>
+        &copy; 2025 A.I.D Whitepaper. All rights reserved.
+    </footer>
+
+    <!-- JavaScript 動態標題與滾動動畫 -->
+    <script>
+        // 動態標題切換
+        let messages = [
+            "A.I.D - The Future of AI",
+            "Welcome to Aurora Ivy Dawson",
+            "Empowering Intelligence with Empathy"
+        ];
+        let index = 0;
+        setInterval(() => {
+            document.title = messages[index];
+            index = (index + 1) % messages.length;
+        }, 2000);
+
+        // 滾動出現動畫
+        window.addEventListener('scroll', () => {
+            const aboutText = document.getElementById('about-text');
+            if (window.scrollY > 100) {
+                aboutText.classList.add('show');
+            }
+        });
+    </script>
 
 </body>
 </html>
-<style>
-/* 背景流光 */
-body {
-    margin: 0;
-    background: linear-gradient(135deg, #1e1e2f, #3d3d5c);
-    background-size: 400% 400%;
-    animation: backgroundFlow 10s ease infinite;
-    color: #fff;
-    font-family: 'Orbitron', sans-serif;
-    text-align: center;
-    padding: 2rem;
-}
-
-@keyframes backgroundFlow {
-    0% {background-position: 0% 50%;}
-    50% {background-position: 100% 50%;}
-    100% {background-position: 0% 50%;}
-}
-
-/* AI女孩光暈動畫 */
-.ai-girl {
-    margin-top: 2rem;
-    border-radius: 50%;
-    box-shadow: 0 0 20px #b3b3ff;
-    animation: glow 3s ease-in-out infinite;
-    transition: transform 0.5s;
-    cursor: pointer;
-}
-
-.ai-girl:hover {
-    transform: scale(1.05);
-}
-
-@keyframes glow {
-    0% {box-shadow: 0 0 20px #b3b3ff;}
-    50% {box-shadow: 0 0 40px #b3b3ff, 0 0 60px #6f6fff;}
-    100% {box-shadow: 0 0 20px #b3b3ff;}
-}
-</style>
-<script>
-// 動態標題
-let messages = ["A.I.D. - The Future of AI", "Welcome to Aurora Ivy Dawson", "Intelligence Beyond Imagination"];
-let index = 0;
-setInterval(() => {
-    document.title = messages[index];
-    index = (index + 1) % messages.length;
-}, 2000);
-</script>
-<style>
-.scroll-text {
-    margin-top: 3rem;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 1s ease;
-}
-
-.scroll-text.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-</style>
-
-<div class="scroll-text" id="about-text">
-    <h2>About A.I.D.</h2>
-    <p>Aurora Ivy Dawson is an advanced AI companion with unmatched capabilities.</p>
-</div>
-
-<script>
-// 滾動出現效果
-window.addEventListener('scroll', () => {
-    const aboutText = document.getElementById('about-text');
-    if (window.scrollY > 100) {
-        aboutText.classList.add('show');
-    }
-});
-</script>
