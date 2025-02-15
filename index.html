@@ -132,3 +132,79 @@
 
 </body>
 </html>
+<style>
+/* 背景流光 */
+body {
+    margin: 0;
+    background: linear-gradient(135deg, #1e1e2f, #3d3d5c);
+    background-size: 400% 400%;
+    animation: backgroundFlow 10s ease infinite;
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    padding: 2rem;
+}
+
+@keyframes backgroundFlow {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/* AI女孩光暈動畫 */
+.ai-girl {
+    margin-top: 2rem;
+    border-radius: 50%;
+    box-shadow: 0 0 20px #b3b3ff;
+    animation: glow 3s ease-in-out infinite;
+    transition: transform 0.5s;
+    cursor: pointer;
+}
+
+.ai-girl:hover {
+    transform: scale(1.05);
+}
+
+@keyframes glow {
+    0% {box-shadow: 0 0 20px #b3b3ff;}
+    50% {box-shadow: 0 0 40px #b3b3ff, 0 0 60px #6f6fff;}
+    100% {box-shadow: 0 0 20px #b3b3ff;}
+}
+</style>
+<script>
+// 動態標題
+let messages = ["A.I.D. - The Future of AI", "Welcome to Aurora Ivy Dawson", "Intelligence Beyond Imagination"];
+let index = 0;
+setInterval(() => {
+    document.title = messages[index];
+    index = (index + 1) % messages.length;
+}, 2000);
+</script>
+<style>
+.scroll-text {
+    margin-top: 3rem;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease;
+}
+
+.scroll-text.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+
+<div class="scroll-text" id="about-text">
+    <h2>About A.I.D.</h2>
+    <p>Aurora Ivy Dawson is an advanced AI companion with unmatched capabilities.</p>
+</div>
+
+<script>
+// 滾動出現效果
+window.addEventListener('scroll', () => {
+    const aboutText = document.getElementById('about-text');
+    if (window.scrollY > 100) {
+        aboutText.classList.add('show');
+    }
+});
+</script>
