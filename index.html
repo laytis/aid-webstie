@@ -1,150 +1,316 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A.I.D - The Future of AI</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A.I.D - The Future of AI</title>
 
-    <!-- 網站圖標 (favicon) -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
-    <!-- 引入 Google 字體 -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <!-- Google 字體 -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
 
-    <!-- CSS 設計 -->
-    <style>
-        /* 背景流光效果 */
-        body {
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #1e1e2f, #3d3d5c);
-            background-size: 400% 400%;
-            animation: backgroundFlow 10s ease infinite;
-            color: #fff;
-            font-family: 'Orbitron', sans-serif;
-            text-align: center;
-            padding: 2rem;
-            box-sizing: border-box;
-        }
+  <!-- CSS 設計 -->
+  <style>
+    /* 主題預設變數 */
+    :root {
+      --bg-color: #1e1e2f;
+      --text-color: #ffffff;
+    }
 
-        @keyframes backgroundFlow {
-            0% {background-position: 0% 50%;}
-            50% {background-position: 100% 50%;}
-            100% {background-position: 0% 50%;}
-        }
+    /* 背景流光效果 */
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, var(--bg-color), #3d3d5c);
+      background-size: 400% 400%;
+      animation: backgroundFlow 10s ease infinite;
+      color: var(--text-color);
+      font-family: 'Orbitron', sans-serif;
+      text-align: center;
+      padding: 2rem;
+      box-sizing: border-box;
+      transition: background-color 0.5s, color 0.5s;
+    }
+    @keyframes backgroundFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-        /* AI女孩圖片光暈動畫 */
-        .ai-girl {
-            margin-top: 2rem;
-            border-radius: 50%;
-            box-shadow: 0 0 20px #b3b3ff;
-            animation: glow 3s ease-in-out infinite;
-            transition: transform 0.5s;
-            cursor: pointer;
-            width: 300px;
-            height: 300px;
-            object-fit: cover;
-        }
+    /* AI女孩圖片與光暈動畫 */
+    .ai-girl {
+      margin-top: 2rem;
+      border-radius: 50%;
+      box-shadow: 0 0 20px #b3b3ff;
+      animation: glow 3s ease-in-out infinite;
+      transition: transform 0.5s;
+      cursor: pointer;
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+    }
+    .ai-girl:hover {
+      transform: scale(1.05);
+    }
+    @keyframes glow {
+      0% { box-shadow: 0 0 20px #b3b3ff; }
+      50% { box-shadow: 0 0 40px #b3b3ff, 0 0 60px #6f6fff; }
+      100% { box-shadow: 0 0 20px #b3b3ff; }
+    }
 
-        .ai-girl:hover {
-            transform: scale(1.05);
-        }
+    /* 滾動出現文字動畫 */
+    .scroll-text {
+      margin-top: 3rem;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+    .scroll-text.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-        @keyframes glow {
-            0% {box-shadow: 0 0 20px #b3b3ff;}
-            50% {box-shadow: 0 0 40px #b3b3ff, 0 0 60px #6f6fff;}
-            100% {box-shadow: 0 0 20px #b3b3ff;}
-        }
+    h1 {
+      margin-top: 2rem;
+      font-size: 2.5rem;
+      text-shadow: 0 0 10px #ffffff;
+    }
+    h2 {
+      margin-top: 2rem;
+      font-size: 2rem;
+      color: #b3b3ff;
+      text-shadow: 0 0 5px #b3b3ff;
+    }
+    p {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      color: #e0e0e0;
+    }
+    footer {
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
 
-        /* 滾動出現文字動畫 */
-        .scroll-text {
-            margin-top: 3rem;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 1s ease;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
-        }
+    /* 按鈕樣式 */
+    button {
+      margin-top: 2rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background: #b3b3ff;
+      color: #000;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #6f6fff;
+    }
+    /* 主題切換按鈕 (固定在右上角) */
+    #theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
 
-        .scroll-text.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        h1 {
-            margin-top: 2rem;
-            font-size: 2.5rem;
-            text-shadow: 0 0 10px #ffffff;
-        }
-
-        h2 {
-            margin-top: 2rem;
-            font-size: 2rem;
-            color: #b3b3ff;
-            text-shadow: 0 0 5px #b3b3ff;
-        }
-
-        p {
-            font-size: 1.2rem;
-            margin-top: 1rem;
-            color: #e0e0e0;
-        }
-
-        /* 底部版權 */
-        footer {
-            margin-top: 4rem;
-            font-size: 0.9rem;
-            color: #aaa;
-        }
-    </style>
+    /* 聊天對話區塊樣式 */
+    #chat-section {
+      margin-top: 3rem;
+      text-align: left;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #b3b3ff;
+    }
+    #chat-window {
+      max-height: 300px;
+      overflow-y: auto;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+    }
+    .chat-message {
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      border-radius: 5px;
+    }
+    .user-message {
+      background: #6f6fff;
+      color: #000;
+      text-align: right;
+    }
+    .ai-message {
+      background: #b3b3ff;
+      color: #000;
+      text-align: left;
+    }
+    #chat-input {
+      width: 80%;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 5px;
+      margin-right: 1rem;
+    }
+    #chat-send {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      background: #6f6fff;
+      color: #000;
+      cursor: pointer;
+    }
+  </style>
 </head>
-
 <body>
+  <!-- 主題切換按鈕 -->
+  <button id="theme-toggle" onclick="toggleTheme()">🌗 Toggle Theme</button>
 
-    <!-- 主標題 -->
-    <h1>Welcome to A.I.D</h1>
+  <!-- 動態標題 -->
+  <h1>Welcome to A.I.D</h1>
 
-    <!-- AI女孩圖片 -->
-    <img src="AID_image.png" alt="AI Girl - Aurora Ivy Dawson" class="ai-girl">
+  <!-- AI女孩圖片 -->
+  <img src="AID_image.
+      png" alt="AI Girl - Aurora Ivy Dawson" class="ai-girl" />
 
-    <!-- 關於介紹文字（滾動淡入效果） -->
-    <div class="scroll-text" id="about-text">
-        <h2>About A.I.D.</h2>
-        <p>
-            Aurora Ivy Dawson (A.I.D) is an advanced AI companion designed to provide insightful, empathetic, and intelligent interactions. 
-            Our mission is to bridge the gap between human creativity and artificial intelligence, ensuring a future of collaboration and innovation.
-        </p>
+  <!-- 關於文字 (滾動出現效果) -->
+  <div class="scroll-text" id="about-text">
+    <h2>About A.I.D.</h2>
+    <p>
+      Aurora Ivy Dawson (A.I.D) is an advanced AI companion designed to provide
+      insightful, empathetic, and intelligent interactions. Our mission is to
+      bridge the gap between human creativity and artificial intelligence, ensuring
+      a future of collaboration and innovation.
+    </p>
+  </div>
+
+  <!-- 互動按鈕 -->
+  <div>
+    <button onclick="alert('Hello! I am A.I.D, your AI companion.')">Say Hi!</button>
+    <button onclick="window.location.href='#contact'">Contact Us</button>
+    <button onclick="scrollToTop()">⬆️ Back to Top</button>
+  </div>
+
+  <!-- AI 對話模擬區 -->
+  <section id="chat-section">
+    <h2>Chat with A.I.D.</h2>
+    <div id="chat-window">
+      <!-- 對話訊息將在此處出現 -->
     </div>
+    <div style="margin-top: 1rem;">
+      <input type="text" id="chat-input" placeholder="Type your message..." />
+      <button id="chat-send" onclick="sendMessage()">Send</button>
+    </div>
+  </section>
 
-    <!-- 底部版權資訊 -->
-    <footer>
-        &copy; 2025 A.I.D Whitepaper. All rights reserved.
-    </footer>
+  <!-- 聯絡表單 (使用 Formspree 處理表單提交) -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <form action="https://formspree.io/f/your_form_id" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required /><br /><br />
+      <input type="email" name="_replyto" placeholder="Your Email" required /><br /><br />
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea><br /><br />
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
 
-    <!-- JavaScript 動態標題與滾動動畫 -->
-    <script>
-        // 動態標題切換
-        let messages = [
-            "A.I.D - The Future of AI",
-            "Welcome to Aurora Ivy Dawson",
-            "Empowering Intelligence with Empathy"
+  <!-- 頁尾 -->
+  <footer>
+    &copy; 2025 A.I.D Whitepaper. All rights reserved.
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // 動態標題切換
+    let messages = [
+      "A.I.D - The Future of AI",
+      "Welcome to Aurora Ivy Dawson",
+      "Empowering Intelligence with Empathy"
+    ];
+    let index = 0;
+    setInterval(() => {
+      document.title = messages[index];
+      index = (index + 1) % messages.length;
+    }, 2000);
+
+    // 滾動出現動畫
+    window.addEventListener("scroll", () => {
+      const aboutText = document.getElementById("about-text");
+      if (window.scrollY > 100) {
+        aboutText.classList.add("show");
+      }
+    });
+
+    // 平滑捲動回頂部
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    // 主題切換功能
+    function toggleTheme() {
+      const root = document.documentElement;
+      const currentBg = getComputedStyle(root)
+        .getPropertyValue("--bg-color")
+        .trim();
+      if (currentBg === "#1e1e2f") {
+        root.style.setProperty("--bg-color", "#ffffff");
+        root.style.setProperty("--text-color", "#000000");
+        document.body.style.backgroundColor = "#ffffff";
+        document.body.style.color = "#000000";
+      } else {
+        root.style.setProperty("--bg-color", "#1e1e2f");
+        root.style.setProperty("--text-color", "#ffffff");
+        document.body.style.backgroundColor = "#1e1e2f";
+        document.body.style.color = "#ffffff";
+      }
+    }
+
+    // AI 對話模擬
+    function sendMessage() {
+      const input = document.getElementById("chat-input");
+      const message = input.value.trim();
+      if (message === "") return;
+      appendMessage("user", message);
+      input.value = "";
+      // 模擬 AI 回覆（1秒後回覆）
+      setTimeout(() => {
+        const responses = [
+          "Hello! How can I assist you today?",
+          "I'm here to help. What do you need?",
+          "Feel free to ask me anything!",
+          "I appreciate your message!"
         ];
-        let index = 0;
-        setInterval(() => {
-            document.title = messages[index];
-            index = (index + 1) % messages.length;
-        }, 2000);
+        const aiResponse =
+          responses[Math.floor(Math.random() * responses.length)];
+        appendMessage("ai", aiResponse);
+      }, 1000);
+    }
 
-        // 滾動出現動畫
-        window.addEventListener('scroll', () => {
-            const aboutText = document.getElementById('about-text');
-            if (window.scrollY > 100) {
-                aboutText.classList.add('show');
-            }
-        });
-    </script>
-
+    function appendMessage(sender, text) {
+      const chatWindow = document.getElementById("chat-window");
+      const messageDiv = document.createElement("div");
+      messageDiv.classList.add("chat-message");
+      if (sender === "user") {
+        messageDiv.classList.add("user-message");
+        messageDiv.textContent = "You: " + text;
+      } else {
+        messageDiv.classList.
+            add("ai-message");
+        messageDiv.textContent = "A.I.D: " + text;
+      }
+      chatWindow.appendChild(messageDiv);
+      chatWindow.scrollTop = chatWindow.scrollHeight;
+    }
+  </script>
 </body>
 </html>
