@@ -170,6 +170,30 @@
       color: #000;
       cursor: pointer;
     }
+
+    /* Gallery 滑動展示區 */
+    #gallery {
+      margin-top: 3rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #gallery h2 {
+      margin-bottom: 1rem;
+    }
+    .slider {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+    .slider img {
+      width: 100%;
+      display: none;
+      border-radius: 10px;
+    }
+    .slider img.active {
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -179,7 +203,7 @@
   <!-- 動態標題 -->
   <h1>Welcome to A.I.D</h1>
 
-  <!-- AI女孩圖片 -->
+  <!-- AI女孩主要圖片 -->
   <img src="AID_image.png" alt="AI Girl - Aurora Ivy Dawson" class="ai-girl" />
 
   <!-- 關於文字 (滾動出現效果) -->
@@ -199,6 +223,16 @@
     <button onclick="window.location.href='#contact'">Contact Us</button>
     <button onclick="scrollToTop()">⬆️ Back to Top</button>
   </div>
+
+  <!-- Gallery 圖片展示區 (滑動展示多張 A.I.D. 圖片) -->
+  <section id="gallery">
+    <h2>A.I.D. Gallery</h2>
+    <div class="slider">
+      <img src="AID_image1.png" alt="A.I.D. Image 1" class="active" />
+      <img src="AID_image2.png" alt="A.I.D. Image 2" />
+      <img src="AID_image3.png" alt="A.I.D. Image 3" />
+    </div>
+  </section>
 
   <!-- AI 對話模擬區 -->
   <section id="chat-section">
@@ -309,6 +343,18 @@
       chatWindow.appendChild(messageDiv);
       chatWindow.scrollTop = chatWindow.scrollHeight;
     }
+
+    // Gallery 圖片滑動展示功能
+    function initSlider() {
+      const images = document.querySelectorAll('.slider img');
+      let currentIndex = 0;
+      setInterval(() => {
+        images[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % images.length;
+        images[currentIndex].classList.add('active');
+      }, 3000);
+    }
+    window.addEventListener('load', initSlider);
   </script>
 </body>
 </html>
